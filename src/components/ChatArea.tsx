@@ -37,7 +37,7 @@ export default function ChatArea({ messages, isLoading }: ChatAreaProps) {
             className={`max-w-[80%] rounded-2xl px-5 py-3 shadow-sm ${
               msg.sender === "user"
                 ? "bg-[#84B179] text-white rounded-tr-none border border-[#6A7E3F]"
-                : "bg-white text-slate-700 border border-[#C7EABB] rounded-tl-none border border-[#6A7E3F]"
+                : "bg-white text-slate-700 rounded-tl-none border border-[#6A7E3F]"
             }`}
           >
             <ReactMarkdown>
