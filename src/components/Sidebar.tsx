@@ -1,4 +1,3 @@
-import React from "react";
 import { Code, Briefcase } from "lucide-react";
 import Dog from "../assets/dog.png";
 

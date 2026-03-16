@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Bot, User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import type { Message } from "./types";

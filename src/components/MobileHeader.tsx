@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function MobileHeader() {
   return (
     <div className="md:hidden p-4 border-b border-[#C7EABB] bg-white/70 backdrop-blur-md flex items-center gap-3">

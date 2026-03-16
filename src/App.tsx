@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import MobileHeader from "./components/MobileHeader";
 import ChatArea from "./components/ChatArea";
