@@ -22,7 +22,8 @@ An AI-powered portfolio chatbot built with React, TypeScript, Tailwind CSS, and 
 
 ## Setup
 
-1. Clone the repo : 
+1. Clone the repo : ai-portfolio-chatbot-cyan.vercel.app
+
 
 2. Install dependencies
 
