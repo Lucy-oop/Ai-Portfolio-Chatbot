@@ -2,8 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { portfolioContext } from "../src/portfolioContext.js";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-export default async function handler(req: VercelRequest,
-  res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
@@ -16,6 +15,7 @@ export default async function handler(req: VercelRequest,
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
+
     if (!apiKey) {
       return res.status(500).json({ error: "API key missing" });
     }
@@ -23,12 +23,13 @@ export default async function handler(req: VercelRequest,
     const genAI = new GoogleGenerativeAI(apiKey);
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       systemInstruction: portfolioContext,
     });
 
     const result = await model.generateContent(message);
-    const text = result.response.text();
+    const response = await result.response;
+    const text = response.text();
 
     return res.status(200).json({ text });
 
