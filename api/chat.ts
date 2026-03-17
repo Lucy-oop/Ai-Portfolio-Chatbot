@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { portfolioContext } from "../src/portfolioData";
+import { portfolioContext } from "../src/portfolioContext";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 export default async function handler(req: VercelRequest,
