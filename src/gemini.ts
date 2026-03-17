@@ -1,25 +1,20 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { portfolioContext } from "./portfolioContext";
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey);
+export async function sendMessageToAI(message: string) {
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message }),
+    });
 
-// We use the gemini-1.5-flash model as it's fast and supports system instructions
-const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
-  systemInstruction: portfolioContext,
-});
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : { text: "No response" };
 
-// Initialize a chat session so it remembers the conversation history
-export const chatSession = model.startChat({
-  history: [
-    {
-      role: "user",
-      parts: [{ text: "Hello! Who are you?" }],
-    },
-    {
-      role: "model",
-      parts: [{ text: "Hi! I'm Lucy's AI Assistant. I can tell you about her skills, projects, or answer frontend development questions. What would you like to know?" }],
-    },
-  ],
-});
+    return data.text;
+  } catch (error) {
+    console.error("Gemini error:", error);
+    return "Error connecting to AI";
+  }
+}
